@@ -17,10 +17,6 @@ define([
 
         this.subscribeAll = function() {
 
-            this.subscribers.date = this.date.subscribe(function(val) {
-
-            });
-
             this.subscribers.periodStart = this.periodStart.subscribe(function(val) {
                 this.model.put({'date': this.date(), 'period_start': val});
 
