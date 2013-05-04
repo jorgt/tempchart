@@ -1,0 +1,14 @@
+2013-05-04 03:09:49 APPLICATION LOG. Current level: 2, Installed: /Applications/MAMP/htdocs/tempchart
+2013-05-04 03:09:49 Setting template to: /Applications/MAMP/htdocs/tempchart/App/Templates/index.phtml
+2013-05-04 03:09:49 Setting up DB: temp
+2013-05-04 03:09:49 instantiating: Core\Module via Core\Authenticate\AuthenticateConfig
+2013-05-04 03:09:49 instantiating: Core\Module via Core\Api\ApiConfig
+2013-05-04 03:09:49 instantiating: Core\Module via App\Modules\Temp\TempConfig
+2013-05-04 03:09:49 Starting the engine
+2013-05-04 03:09:49 Start parsing URL: "index"
+2013-05-04 03:09:49 Found a match: "index
+2013-05-04 03:09:49 \App\Modules\Temp\Controllers\Temp
+2013-05-04 03:09:49 Table "temperature" exists or has been created
+2013-05-04 03:09:49 Dispatching to: "\App\Modules\Temp\Controllers\Temp::Index"
+2013-05-04 03:09:49 Rendingering output
+2013-05-04 03:09:49 /Applications/MAMP/htdocs/tempchart/App/Templates/index.phtml

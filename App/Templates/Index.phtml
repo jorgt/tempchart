@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="google" content="notranslate">
+        <meta http-equiv="Content-Language" content="en" />
+        <meta lang="en-AU">
+        <meta name="gwt:property" content="locale=en_AU">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="<?= _URL; ?>/public/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?= _URL; ?>/public/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="<?= _URL; ?>/public/css/main.css">
+        <link rel="stylesheet" href="<?= _URL; ?>/public/css/font-awesome.min.css">
+        <style>
+            body {
+                padding-top: 20px;
+            }
+
+            #graph{
+                margin-top: 12px;
+                width: 100%;
+                height: 465px;
+            }
+
+            .cal-float {
+                float: left;
+            }
+            
+            #calendar td {
+                max-width: 20px !important;
+                padding: 3px;
+            }
+
+            #calendar > .cprev, #calendar > .cnext {
+                padding: 74px 10px 74px 10px; /* or 4545 to match head */
+                margin: 0px 2px 0px 2px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                border: 1px solid white; /*#f2f2f2;*/
+            }
+            
+            .label {
+                display: inline;
+            }
+
+            #calendar > .cprev:hover, #calendar > .cnext:hover {
+                cursor: pointer;
+                color: #006dcc
+            }
+
+            #calendar .label {
+                line-height: inherit;
+                font-size: inherit;
+                width: 70%;
+            }
+
+            #day-details > div{
+                padding: 0px 40px 0px 40px;
+            }
+
+            textarea {
+                width: 180px;
+            }
+            
+            legend {
+                padding-top: 10px;
+                margin-bottom: 0px;
+            }
+
+            .calfield {
+                cursor: pointer;
+                text-align: center;
+            }
+
+            #calendar tr.day > th {
+                border-bottom: 1px solid lightgray;
+            }
+
+            .disabled {
+                cursor: pointer !important;
+            }
+
+            .calfield:hover {
+                font-weight: bold;
+            }
+
+        </style>
+        <script scr="<?= _URL; ?>/public/js/vendor/modernizr-2.6.2.min.js"></script>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="/v7/public/http://browsehappy.com/">upgrade your browser</a> or <a href="/v7/public/http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container">
+            <div class="masthead">
+                <h3>Lozzie's Temperature Chart</h3>
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <a class="brand" href="" id="title" data-bind="text: dateString"></a>
+                        <ul class="nav">
+                            <li class="divider-vertical"></li>
+                            <li class="disabled">
+                                <a onclick='return false;' href="#">
+                                    Goto <i class="icon-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="active"><a href="#/today">Today</a></li>
+                            <li><a href="#/last">Last entry</a></li>
+                            <li><a href="#/first">First Entry</a></li>
+                            <li><a href="#/overview">Overview</a></li>
+                        </ul>
+                    </div>
+                </div><!-- /.navbar -->
+            </div>
+            <div class="row">
+
+                <div class="span3">
+                    <div id="calendar" data-bind="template: { name: 'calendar-template' }"></div>
+                    <div class="clearfix"></div>
+                    <div id="day-details" data-bind="template: {name: 'day-template' }"></div>
+                </div>
+                <div class="span9">
+                    <div class="render" id="graph"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- load javascripts after the dom is built -->
+
+        <!-- the reason this is before loading the main file and require itself, is the urlargs, 
+             because this way it will bust the main and requirejs files too. -->
+        <script type="text/javascript">
+            var require = {
+                waitSeconds: 15,
+                urlArgs: "bust=" + (new Date()).getTime()
+            };
+        </script>
+        <!--<script src="<?= _URL; ?>/public/js/vendor/require.js"></script>-->
+        <script data-main="<?= _URL; ?>/public/js/main.js" src="<?= _URL; ?>/public/js/vendor/require.js"></script>
+    </script>
+</body>
+</html>

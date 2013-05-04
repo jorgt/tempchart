@@ -1,0 +1,17 @@
+2013-05-04 03:10:08 AJAX CALL. Current level: 2, Installed: /Applications/MAMP/htdocs/tempchart
+2013-05-04 03:10:08 Setting up DB: temp
+2013-05-04 03:10:08 instantiating: Core\Module via Core\Authenticate\AuthenticateConfig
+2013-05-04 03:10:08 instantiating: Core\Module via Core\Api\ApiConfig
+2013-05-04 03:10:08 instantiating: Core\Module via App\Modules\Temp\TempConfig
+2013-05-04 03:10:08 Starting the engine
+2013-05-04 03:10:08 Start parsing URL: "api/temp/notes/"
+2013-05-04 03:10:08 Found a match: "api/:db/:model/
+2013-05-04 03:10:08 \Core\Api\Controllers\Api
+2013-05-04 03:10:08 API taking over
+2013-05-04 03:10:08 Base class, mapping to table: temperature
+2013-05-04 03:10:08 Dispatching to: "\Core\Api\Controllers\Api::Create"
+2013-05-04 03:10:08 Notice: ob_end_clean(): failed to delete buffer. No buffer to delete
+  Trown in function Core\Exceptions::err_handler
+  Trown in function ob_end_clean on line 137 of file /Applications/MAMP/htdocs/tempchart/Core/Exceptions.php
+  Trown in function Core\Exceptions::capture_shutdown
+

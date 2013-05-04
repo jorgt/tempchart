@@ -1,0 +1,16 @@
+2013-04-27 04:28:07 AJAX CALL. Current level: 2, Installed: /Applications/MAMP/htdocs/tempchart
+2013-04-27 04:28:07 Setting up DB: temp
+2013-04-27 04:28:07 instantiating: Core\Module via Core\Authenticate\AuthenticateConfig
+2013-04-27 04:28:07 instantiating: Core\Module via Core\Api\ApiConfig
+2013-04-27 04:28:07 instantiating: Core\Module via App\Modules\Temp\TempConfig
+2013-04-27 04:28:07 Starting the engine
+2013-04-27 04:28:07 Start parsing URL: "api/temperature/notes/"
+2013-04-27 04:28:07 Found a match: "api/:db/:model/
+2013-04-27 04:28:07 \Core\Api\Controllers\Api
+2013-04-27 04:28:07 API taking over
+2013-04-27 04:28:07 UNFORCED MODE: Database does not exist - temperature
+  Trown in function Core\Databases\Database::get on line 60 of file /Applications/MAMP/htdocs/tempchart/Core/Api/Controllers/Api.php
+  Trown in function Core\Api\Controllers\Api::__construct on line 59 of file /Applications/MAMP/htdocs/tempchart/Core/Dispatchers/DispatchToController.php
+  Trown in function Core\Dispatchers\DispatchToController::go on line 169 of file /Applications/MAMP/htdocs/tempchart/Core/Application.php
+  Trown in function Core\Application::go on line 26 of file /Applications/MAMP/htdocs/tempchart/public/index.php
+

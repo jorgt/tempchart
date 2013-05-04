@@ -1,0 +1,14 @@
+<script type="text/html" id="calendar-field">
+    <td data-bind="click: $root.viewDay, 
+        css: {
+            'muted': field.class === 'muted', 
+            'calfield': field.class !== 'muted'
+         }">
+        <span data-bind="text: field.day,
+                        css: {'label': field.class === 'active' || field.class === 'today',
+                               'label-important': field.class === 'today',
+                                'label-info': field.class === 'active'
+                    }">
+        </span>
+    </td>
+</script>

@@ -1,0 +1,28 @@
+<script type="text/html" id="day-template">
+    <div>
+        <form>
+            <fieldset>
+                <legend>Period</legend>
+                    <label class="checkbox inline">
+                        <input type="checkbox" name="start" 
+                            data-bind='checked: node.periodStart' />Start
+                    </label>
+                    <label class="checkbox inline">
+                        <input type="checkbox" name="end" 
+                            data-bind='checked: node.periodEnd' />End
+                    </label>
+            </fieldset>
+            <fieldset>
+                <legend>OPK</legend>
+                    <label class="checkbox inline">
+                        <input type="checkbox" name="opk" 
+                            data-bind='checked: node.opkSurge' />Surge detected
+                    </label>
+            </fieldset>
+            <fieldset>
+                <legend>Notes</period>
+                <textarea rows="3" data-bind='value: node.comment, valueUpdate: "afterkeydown"'></textarea>
+            </fieldset>
+        </form>
+    </div>
+</script>

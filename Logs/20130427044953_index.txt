@@ -1,0 +1,18 @@
+2013-04-27 04:49:53 APPLICATION LOG. Current level: 2, Installed: /Applications/MAMP/htdocs/tempchart
+2013-04-27 04:49:53 Setting template to: /Applications/MAMP/htdocs/tempchart/App/Templates/index.phtml
+2013-04-27 04:49:53 Setting up DB: temp
+2013-04-27 04:49:53 instantiating: Core\Module via Core\Authenticate\AuthenticateConfig
+2013-04-27 04:49:53 instantiating: Core\Module via Core\Api\ApiConfig
+2013-04-27 04:49:53 instantiating: Core\Module via App\Modules\Temp\TempConfig
+2013-04-27 04:49:53 Starting the engine
+2013-04-27 04:49:53 Start parsing URL: "index"
+2013-04-27 04:49:53 Found a match: "index
+2013-04-27 04:49:53 \App\Modules\Temp\Controllers\Temp
+2013-04-27 04:49:53 Table "temperature" exists or has been created
+2013-04-27 04:49:53 Base class, mapping to table: temperature
+2013-04-27 04:49:53 Mandatory fields missing for table: temperature
+  Trown in function Core\Models\DbModel::create on line 26 of file /Applications/MAMP/htdocs/tempchart/App/Modules/Temp/Controllers/Temp.php
+  Trown in function App\Modules\Temp\Controllers\Temp::__construct on line 59 of file /Applications/MAMP/htdocs/tempchart/Core/Dispatchers/DispatchToController.php
+  Trown in function Core\Dispatchers\DispatchToController::go on line 169 of file /Applications/MAMP/htdocs/tempchart/Core/Application.php
+  Trown in function Core\Application::go on line 26 of file /Applications/MAMP/htdocs/tempchart/public/index.php
+

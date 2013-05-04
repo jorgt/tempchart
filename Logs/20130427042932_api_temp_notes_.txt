@@ -1,0 +1,12 @@
+2013-04-27 04:29:32 AJAX CALL. Current level: 2, Installed: /Applications/MAMP/htdocs/tempchart
+2013-04-27 04:29:32 Setting up DB: temp
+2013-04-27 04:29:32 instantiating: Core\Module via Core\Authenticate\AuthenticateConfig
+2013-04-27 04:29:32 instantiating: Core\Module via Core\Api\ApiConfig
+2013-04-27 04:29:32 instantiating: Core\Module via App\Modules\Temp\TempConfig
+2013-04-27 04:29:32 Starting the engine
+2013-04-27 04:29:32 Start parsing URL: "api/temp/notes/"
+2013-04-27 04:29:32 Found a match: "api/:db/:model/
+2013-04-27 04:29:32 \Core\Api\Controllers\Api
+2013-04-27 04:29:32 API taking over
+2013-04-27 04:29:32 Base class, mapping to table: temperature
+2013-04-27 04:29:32 Dispatching to: "\Core\Api\Controllers\Api::Read"

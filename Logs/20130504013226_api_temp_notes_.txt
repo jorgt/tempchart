@@ -1,0 +1,65 @@
+2013-05-04 01:32:26 AJAX CALL. Current level: 4, Installed: /Applications/MAMP/htdocs/tempchart
+2013-05-04 01:32:26 Instantiating: Core\Application
+2013-05-04 01:32:26 fetching class: Core\Output\Response
+2013-05-04 01:32:26 fetching class: Core\Output\ResponseJson
+2013-05-04 01:32:26 Instantiating Core\Output\ResponseJson
+2013-05-04 01:32:26 fetching class: Core\Router
+2013-05-04 01:32:26 Instantiating: Core\Router
+2013-05-04 01:32:26 fetching class: Core\Databases\Database
+2013-05-04 01:32:26 Setting up DB: temp
+2013-05-04 01:32:26 fetching class: Core\Authenticate\AuthenticateConfig
+2013-05-04 01:32:26 fetching class: Core\Module
+2013-05-04 01:32:26 instantiating: Core\Module via Core\Authenticate\AuthenticateConfig
+2013-05-04 01:32:26 fetching class: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 fetching class: Core\Api\ApiConfig
+2013-05-04 01:32:26 instantiating: Core\Module via Core\Api\ApiConfig
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 fetching class: Core\Temp\TempConfig
+2013-05-04 01:32:26 fetching class: App\Modules\Temp\TempConfig
+2013-05-04 01:32:26 instantiating: Core\Module via App\Modules\Temp\TempConfig
+2013-05-04 01:32:26 Instantiating: Core\Route
+2013-05-04 01:32:26 Starting the engine
+2013-05-04 01:32:26 Start parsing URL: "api/temp/notes/"
+2013-05-04 01:32:26 Found a match: "api/:db/:model/
+2013-05-04 01:32:26 fetching class: Core\Dispatcher
+2013-05-04 01:32:26 fetching class: Core\Dispatchers\DispatchToController
+2013-05-04 01:32:26 Instantiating: Core\Dispatchers\DispatchToController
+2013-05-04 01:32:26 fetching class: Core\Api\Controllers\Api
+2013-05-04 01:32:26 fetching class: Core\Controllers\NonAuthorized
+2013-05-04 01:32:26 fetching class: Core\Controller
+2013-05-04 01:32:26 \Core\Api\Controllers\Api
+2013-05-04 01:32:26 Instantiating: Core\Api\Controllers\Api
+2013-05-04 01:32:26 API taking over
+2013-05-04 01:32:26 Getting database: temp
+2013-05-04 01:32:26 fetching class: Core\Model
+2013-05-04 01:32:26 fetching class: App\Models\Notes
+2013-05-04 01:32:26 fetching class: Core\Models\DbModel
+2013-05-04 01:32:26 Base class, mapping to table: temperature
+2013-05-04 01:32:26 fetching class: Core\Databases\Collection
+2013-05-04 01:32:26 Getting database: 
+2013-05-04 01:32:26 Getting database: 
+2013-05-04 01:32:26 Getting database: 
+2013-05-04 01:32:26 Dispatching to: "\Core\Api\Controllers\Api::Read"
+2013-05-04 01:32:26 Getting database: 
+2013-05-04 01:32:26 fetching class: Core\Databases\Entry

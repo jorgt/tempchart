@@ -1,0 +1,281 @@
+2013-05-04 01:33:23 AJAX CALL. Current level: 4, Installed: /Applications/MAMP/htdocs/tempchart
+2013-05-04 01:33:23 Instantiating: Core\Application
+2013-05-04 01:33:23 fetching class: Core\Output\Response
+2013-05-04 01:33:23 fetching class: Core\Output\ResponseJson
+2013-05-04 01:33:23 Instantiating Core\Output\ResponseJson
+2013-05-04 01:33:23 fetching class: Core\Router
+2013-05-04 01:33:23 Instantiating: Core\Router
+2013-05-04 01:33:23 fetching class: Core\Databases\Database
+2013-05-04 01:33:23 Setting up DB: temp
+2013-05-04 01:33:23 fetching class: Core\Authenticate\AuthenticateConfig
+2013-05-04 01:33:23 fetching class: Core\Module
+2013-05-04 01:33:23 instantiating: Core\Module via Core\Authenticate\AuthenticateConfig
+2013-05-04 01:33:23 fetching class: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 fetching class: Core\Api\ApiConfig
+2013-05-04 01:33:23 instantiating: Core\Module via Core\Api\ApiConfig
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 fetching class: Core\Temp\TempConfig
+2013-05-04 01:33:23 fetching class: App\Modules\Temp\TempConfig
+2013-05-04 01:33:23 instantiating: Core\Module via App\Modules\Temp\TempConfig
+2013-05-04 01:33:23 Instantiating: Core\Route
+2013-05-04 01:33:23 Starting the engine
+2013-05-04 01:33:23 Start parsing URL: "api/temp/notes/"
+2013-05-04 01:33:23 Found a match: "api/:db/:model/
+2013-05-04 01:33:23 fetching class: Core\Dispatcher
+2013-05-04 01:33:23 fetching class: Core\Dispatchers\DispatchToController
+2013-05-04 01:33:23 Instantiating: Core\Dispatchers\DispatchToController
+2013-05-04 01:33:23 fetching class: Core\Api\Controllers\Api
+2013-05-04 01:33:23 fetching class: Core\Controllers\NonAuthorized
+2013-05-04 01:33:23 fetching class: Core\Controller
+2013-05-04 01:33:23 \Core\Api\Controllers\Api
+2013-05-04 01:33:23 Instantiating: Core\Api\Controllers\Api
+2013-05-04 01:33:23 API taking over
+2013-05-04 01:33:23 Getting database: temp
+2013-05-04 01:33:23 fetching class: Core\Model
+2013-05-04 01:33:23 fetching class: App\Models\Notes
+2013-05-04 01:33:23 fetching class: Core\Models\DbModel
+2013-05-04 01:33:23 Base class, mapping to table: temperature
+2013-05-04 01:33:23 fetching class: Core\Databases\Collection
+2013-05-04 01:33:23 Getting database: 
+2013-05-04 01:33:23 Getting database: 
+2013-05-04 01:33:23 Getting database: 
+2013-05-04 01:33:23 Dispatching to: "\Core\Api\Controllers\Api::Create"
+2013-05-04 01:33:23 Warning: strip_tags() expects parameter 1 to be string, array given
+  Trown in function Core\Exceptions::err_handler
+  Trown in function strip_tags on line 94 of file /Applications/MAMP/htdocs/tempchart/Core/Debug.php
+                          $line = PHP_EOL;
+
+                      } else {
+
+                          $_str = str_replace('
+', PHP_EOL, $_str);
+
+                          $line = date('Y-m-d H:i:s') . ' ' . html_entity_decode(strip_tags($_str)) . PHP_EOL;
+
+                      }
+
+                      file_put_contents(self::$file, $line, FILE_APPEND);
+
+                  }
+
+  Trown in function Core\Debug::toFile on line 121 of file /Applications/MAMP/htdocs/tempchart/Core/Debug.php
+                      $echo = ob_get_clean();
+
+                      self::collect($echo);
+
+                      self::message($echo);
+
+                      self::toFile($_str);
+
+                  }
+
+              }
+
+      
+
+  Trown in function Core\Debug::Debug on line 38 of file /Applications/MAMP/htdocs/tempchart/Core/Functions.php
+      }
+
+      
+
+      function debug($_str, $_lvl = 2) {
+
+          \Core\Debug::debug($_str, $_lvl);
+
+      }
+
+      
+
+      function sec_session_start() {
+
+  Trown in function debug on line 96 of file /Applications/MAMP/htdocs/tempchart/Core/Api/Controllers/Api.php
+      
+
+              public function create() {
+
+                  $params = (array)$this->request->parameters();
+
+                  debug($params);
+
+                  $new = $params['input'];
+
+                  $new['content'] = str_replace('_', ' ', $new['content']);
+
+                  $db = \Core\Databases\Database::get();
+
+  Trown in function Core\Api\Controllers\Api::create
+  Trown in function call_user_func_array on line 63 of file /Applications/MAMP/htdocs/tempchart/Core/Dispatchers/DispatchToController.php
+                      if (is_callable($controller)) {
+
+                          debug('Dispatching to: "' . $class . '::' . $controller[1] . '"');
+
+                          $this->response->headerResponseCode(200);
+
+                          call_user_func_array($controller, $this->route->variables());
+
+                      } else {
+
+                          throw new \Core\DispatchException('The controller\'s method is not found.', E_USER_ERROR);
+
+                      }
+
+  Trown in function Core\Dispatchers\DispatchToController::go on line 169 of file /Applications/MAMP/htdocs/tempchart/Core/Application.php
+                  $route = $this->router->go($this->request);
+
+                  if ($route !== false) {
+
+                      $this->dispatcher = \Core\Dispatcher::get($this->request, $this->response, $route);
+
+                      $this->dispatcher->go($route);
+
+                      die();
+
+                  } else {
+
+                      $this->response->headerResponseCode(404);
+
+  Trown in function Core\Application::go on line 26 of file /Applications/MAMP/htdocs/tempchart/public/index.php
+      
+
+      $app->router()->registerModule('temp');
+
+      
+
+      $app->go();
+
+2013-05-04 01:33:23 
+2013-05-04 01:33:23 Notice: Undefined index: content
+  Trown in function Core\Exceptions::err_handler on line 98 of file /Applications/MAMP/htdocs/tempchart/Core/Api/Controllers/Api.php
+                  $params = (array)$this->request->parameters();
+
+                  debug($params);
+
+                  $new = $params['input'];
+
+                  $new['content'] = str_replace('_', ' ', $new['content']);
+
+                  $db = \Core\Databases\Database::get();
+
+                  $this->model->create($new);
+
+                  $this->response->send(array('id'=>$db->lastInsertId()));
+
+  Trown in function Core\Api\Controllers\Api::create
+  Trown in function call_user_func_array on line 63 of file /Applications/MAMP/htdocs/tempchart/Core/Dispatchers/DispatchToController.php
+                      if (is_callable($controller)) {
+
+                          debug('Dispatching to: "' . $class . '::' . $controller[1] . '"');
+
+                          $this->response->headerResponseCode(200);
+
+                          call_user_func_array($controller, $this->route->variables());
+
+                      } else {
+
+                          throw new \Core\DispatchException('The controller\'s method is not found.', E_USER_ERROR);
+
+                      }
+
+  Trown in function Core\Dispatchers\DispatchToController::go on line 169 of file /Applications/MAMP/htdocs/tempchart/Core/Application.php
+                  $route = $this->router->go($this->request);
+
+                  if ($route !== false) {
+
+                      $this->dispatcher = \Core\Dispatcher::get($this->request, $this->response, $route);
+
+                      $this->dispatcher->go($route);
+
+                      die();
+
+                  } else {
+
+                      $this->response->headerResponseCode(404);
+
+  Trown in function Core\Application::go on line 26 of file /Applications/MAMP/htdocs/tempchart/public/index.php
+      
+
+      $app->router()->registerModule('temp');
+
+      
+
+      $app->go();
+
+2013-05-04 01:33:23 Getting database: 
+2013-05-04 01:33:23 fetching class: Core\Models\ModelException
+2013-05-04 01:33:23 Mandatory fields missing for table: temperature
+  Trown in function Core\Models\DbModel::create on line 100 of file /Applications/MAMP/htdocs/tempchart/Core/Api/Controllers/Api.php
+                  $new = $params['input'];
+
+                  $new['content'] = str_replace('_', ' ', $new['content']);
+
+                  $db = \Core\Databases\Database::get();
+
+                  $this->model->create($new);
+
+                  $this->response->send(array('id'=>$db->lastInsertId()));
+
+              }
+
+      
+
+  Trown in function Core\Api\Controllers\Api::create
+  Trown in function call_user_func_array on line 63 of file /Applications/MAMP/htdocs/tempchart/Core/Dispatchers/DispatchToController.php
+                      if (is_callable($controller)) {
+
+                          debug('Dispatching to: "' . $class . '::' . $controller[1] . '"');
+
+                          $this->response->headerResponseCode(200);
+
+                          call_user_func_array($controller, $this->route->variables());
+
+                      } else {
+
+                          throw new \Core\DispatchException('The controller\'s method is not found.', E_USER_ERROR);
+
+                      }
+
+  Trown in function Core\Dispatchers\DispatchToController::go on line 169 of file /Applications/MAMP/htdocs/tempchart/Core/Application.php
+                  $route = $this->router->go($this->request);
+
+                  if ($route !== false) {
+
+                      $this->dispatcher = \Core\Dispatcher::get($this->request, $this->response, $route);
+
+                      $this->dispatcher->go($route);
+
+                      die();
+
+                  } else {
+
+                      $this->response->headerResponseCode(404);
+
+  Trown in function Core\Application::go on line 26 of file /Applications/MAMP/htdocs/tempchart/public/index.php
+      
+
+      $app->router()->registerModule('temp');
+
+      
+
+      $app->go();
+

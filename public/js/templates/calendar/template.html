@@ -1,0 +1,13 @@
+<script type="text/html" id="calendar-template">
+    <div class="cal-float cprev" data-bind="click: prevMonth"><i class="icon-chevron-left"></i></div>
+    <table class="table-condensed cal-float cmain">
+        <thead>
+            <tr class="day">
+                <th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th>
+            </tr>
+        </thead>
+        <tbody data-bind="template:{name:'calendar-row', foreach: rows, as: 'row'}">
+        </tbody>
+    </table>
+    <div class="cal-float cnext" data-bind="click: nextMonth"><i class="icon-chevron-right"></i></div>
+</script>

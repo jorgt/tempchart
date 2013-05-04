@@ -1,0 +1,49 @@
+define([
+    'jquery',
+    'knockout',
+    'models/tempModel'
+], function($, ko, model) {
+
+    return function() {
+        this.date = ko.observable();
+        this.periodStart = ko.observable();
+        this.periodEnd = ko.observable();
+        this.opkSurge = ko.observable();
+        this.comment = ko.observable();
+
+        this.model = new model();
+
+        this.subscribers = [];
+
+        this.subscribeAll = function() {
+
+            this.subscribers.date = this.date.subscribe(function(val) {
+
+            });
+
+            this.subscribers.periodStart = this.periodStart.subscribe(function(val) {
+                this.model.put({'date': this.date(), 'period_start': val});
+
+            }.bind(this));
+
+            this.subscribers.periodEnd = this.periodEnd.subscribe(function(val) {
+                this.model.put({'date': this.date(), 'period_end': val});
+            }.bind(this));
+
+            this.subscribers.opkSurge = this.opkSurge.subscribe(function(val) {
+                this.model.put({'date': this.date(), 'opk_surge': val});
+            }.bind(this));
+
+            this.subscribers.comment = this.comment.subscribe(function(val) {
+                this.model.put({'date': this.date(), 'comment': val});
+            }.bind(this));
+        };
+
+        this.unsubscribeAll = function() {
+            for (var i in this.subscribers) {
+                this.subscribers[i].dispose();
+            }
+        };
+    };
+
+});
