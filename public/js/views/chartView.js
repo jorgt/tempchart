@@ -1,10 +1,11 @@
 define([
     'flotr',
     'models/observables',
-    'moment',
-    'models/tempModel'
-], function(Flotr, obs, moment, model) {
+    'models/tempModel',
+    'moment'
+], function(Flotr, obs, model, moment) {
     "use strict";
+
     return function(element) {
 
         this.element = document.getElementById(element);
@@ -14,6 +15,7 @@ define([
         this.offset = 0;
         window.scrollingGraph = true;
         this.start;
+
         this.initialize = function() {
 
             this.options = {
@@ -25,13 +27,18 @@ define([
                     timeFormat: '%d.%m',
                     tickFormatter: function(t) {
                         var d = moment(new Date(t).toString());
+                        var label = '';
+
                         if (moment().format('YYYYMMDD') === d.format('YYYYMMDD')) {
-                            return '<span class="label label-important">' + d.format('DD.MM') + '</span>';
+                            label = 'label label-important';
                         } else if (d.format('YYYYMMDD') === obs.date().format('YYYYMMDD')) {
-                            return '<span class="label label-info">' + d.format('DD.MM') + '</span>';
-                        } else {
-                            return '<span>' + d.format('DD.MM') + '</span>';
+                            label = 'label label-info';
                         }
+
+                        return '<a class="chart-day-link ' + label + '" '
+                                + 'href="#/' + d.format('YYYY/MM/DD') + '">'
+                                + d.format('DD.MM')
+                                + '</a>';
 
                     },
                     timeMode: 'local'
@@ -49,6 +56,7 @@ define([
                 },
                 mouse: {
                     track: true,
+                    trackDecimals: 2,
                     trackFormatter: function(e) {
                         return  'Day: '
                                 + moment(new Date(parseInt(e.x)).toString()).format('dddd, MMMM Do YYYY')
@@ -72,15 +80,15 @@ define([
             if (pos.x !== undefined && pos.y !== undefined && window.scrollingGraph === true) {
                 var x = pos.x + this.offset;
                 var y = pos.y;
-                x = this.roundDateToDay(x);
+                var dx = this.roundDateToDay(x);
                 y = Math.round(y * 20) / 20;
                 obs.data(_.filter(obs.data(), function(entry) {
-                    if (moment(new Date(entry[0]).toString()).format('YYYYMMDD') === x.format('YYYYMMDD')) {
-                        console.log('deleting entry: ' + x);
+                    if (moment(new Date(entry[0]).toString()).format('YYYYMMDD') === dx.format('YYYYMMDD')) {
+                        this.model.del({date:dx.unix()*1000});
                     } else {
                         return entry;
                     }
-                }));
+                }.bind(this)));
                 //todo this filter remove the whole line. fixit. 
                 this.draw();
             }
@@ -123,12 +131,11 @@ define([
             opt.xaxis.max = newx.max;
 
             this.graph = Flotr.draw(this.element, [obs.data()], opt);
-
         }.bind(this);
 
         this.addPoint = function(e) {
             var pos = this.graph.getEventPosition(e);
-            if (pos.x !== undefined && pos.y !== undefined && window.scrollingGraph === true) {
+            if (pos.x !== undefined && pos.y !== undefined && pos.y >= 35.50 && window.scrollingGraph === true) {
 
                 var x = this.roundDateToDay(pos.x + this.offset);
                 var y = Math.round(pos.y * 20) / 20;
@@ -138,7 +145,7 @@ define([
                 obs.data.sort(function(a, b) {
                     return a[0] - b[0];
                 });
-                //var newx = {'min': this.graph.axes.x.min, 'max': this.graph.axes.x.max};
+
                 this.draw();
             }
         }.bind(this);
@@ -160,16 +167,18 @@ define([
                 //console.log('creating entry: ' + date + ' ' + temp);
                 this.model.post({'date': date.unix() * 1000, 'temperature': temp});
                 obs.data.push([date.unix() * 1000, temp]);
-            } else {
-                ar.map(function(a) {
-                    if (moment(new Date(a[0]).toString()).format('YYYYMMDD') === date.format('YYYYMMDD')) {
-                        //console.log('updating entry: ' + date + ' ' + temp);
-                        this.model.put({'date': date.unix() * 1000, 'temperature': temp});
-                        a[1] = temp;
-                    }
-                }.bind(this));
-                obs.data(ar);
-            }
+            } /*else {
+             debugger;
+             ar.map(function(a) {
+             if (moment(new Date(a[0]).toString()).format('YYYYMMDD') === date.format('YYYYMMDD')) {
+             //console.log('updating entry: ' + date + ' ' + temp);
+             this.model.put({'date': date.unix() * 1000, 'temperature': temp});
+             a[1] = temp;
+             }
+             }.bind(this));
+             obs.data(ar);
+             }
+             */
 
         }.bind(this);
 

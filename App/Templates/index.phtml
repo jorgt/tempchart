@@ -22,16 +22,20 @@
                 padding-top: 20px;
             }
 
-            #graph{
+            #graph, #graph-overview {
                 margin-top: 12px;
                 width: 100%;
                 height: 465px;
             }
 
+            #title {
+                min-width: 300px;
+            }
+
             .cal-float {
                 float: left;
             }
-            
+
             #calendar td {
                 max-width: 20px !important;
                 padding: 3px;
@@ -45,7 +49,7 @@
                 border-radius: 5px;
                 border: 1px solid white; /*#f2f2f2;*/
             }
-            
+
             .label {
                 display: inline;
             }
@@ -61,6 +65,10 @@
                 width: 70%;
             }
 
+            a.chart-day-link {
+                cursor: pointer;
+            }
+
             #day-details > div{
                 padding: 0px 40px 0px 40px;
             }
@@ -68,7 +76,7 @@
             textarea {
                 width: 180px;
             }
-            
+
             legend {
                 padding-top: 10px;
                 margin-bottom: 0px;
@@ -100,7 +108,7 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="/v7/public/http://browsehappy.com/">upgrade your browser</a> or <a href="/v7/public/http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
         <div class="container">
-            <div class="masthead">
+            <div class="masthead" id="header">
                 <h3>Lozzie's Temperature Chart</h3>
                 <div class="navbar">
                     <div class="navbar-inner">
@@ -112,23 +120,29 @@
                                     Goto <i class="icon-chevron-right"></i>
                                 </a>
                             </li>
-                            <li class="active"><a href="#/today">Today</a></li>
-                            <li><a href="#/last">Last entry</a></li>
-                            <li><a href="#/first">First Entry</a></li>
-                            <li><a href="#/overview">Overview</a></li>
+                            <li data-bind="css: {active: active() === 'today'}"><a href="#/today">Today</a></li>
+                            <li data-bind="css: {active: active() === 'last'}"><a href="#/last">Last entry</a></li>
+                            <li data-bind="css: {active: active() === 'first'}"><a href="#/first">First Entry</a></li>
+                            <li data-bind="css: {active: active() === 'overview'}"><a href="#/overview">Overview</a></li>
                         </ul>
                     </div>
                 </div><!-- /.navbar -->
             </div>
             <div class="row">
-
-                <div class="span3">
-                    <div id="calendar" data-bind="template: { name: 'calendar-template' }"></div>
-                    <div class="clearfix"></div>
-                    <div id="day-details" data-bind="template: {name: 'day-template' }"></div>
+                <div id="detail">
+                    <div class="span3">
+                        <div id="calendar" data-bind="template: { name: 'calendar-template' }"></div>
+                        <div class="clearfix"></div>
+                        <div id="day-details" data-bind="template: {name: 'day-template' }"></div>
+                    </div>
+                    <div class="span9">
+                        <div class="render" id="graph"></div>
+                    </div>
                 </div>
-                <div class="span9">
-                    <div class="render" id="graph"></div>
+                <div id="overview">
+                    <div class="span12">
+                        <div id="graph-overview" style="width: 100%; height: 465px;"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,10 +152,10 @@
         <!-- the reason this is before loading the main file and require itself, is the urlargs, 
              because this way it will bust the main and requirejs files too. -->
         <script type="text/javascript">
-            var require = {
-                waitSeconds: 15,
-                urlArgs: "bust=" + (new Date()).getTime()
-            };
+                                    var require = {
+                                        waitSeconds: 15,
+                                        urlArgs: "bust=" + (new Date()).getTime()
+                                    };
         </script>
         <!--<script src="<?= _URL; ?>/public/js/vendor/require.js"></script>-->
         <script data-main="<?= _URL; ?>/public/js/main.js" src="<?= _URL; ?>/public/js/vendor/require.js"></script>

@@ -6,6 +6,7 @@ require.config({
         'flotr': 'vendor/flotr.amd',
         'bean': 'vendor/bean-min',
         'sammy': 'vendor/sammy',
+        'bootstrap': 'vendor/bootstrap.min',
         "moment": "vendor/moment"
     },
     shim: {
@@ -17,6 +18,10 @@ require.config({
             deps: ['jquery'],
             exports: 'Sammy'
         },
+        'bootstrap': {
+            deps: ['jquery'],
+            exports: '$'
+        },
         'underscore': {
             exports: '_'
         }
@@ -25,21 +30,21 @@ require.config({
 
 define([
     'controllers/navigation',
-    'views/calendarView',
-    'views/dayView',
-    'views/chartView',
+    'views/overviewView',
+    'views/detailView',
     'views/titleView',
     'knockout'
-], function(nav, cal, day, chart, title, ko) {
+], function(nav, overview, detail, title, ko) {
 
 
     //this applies all bindings for the calendar, and feeds it the
     //global observable on Date, used by the calendar to update the graph
-    ko.applyBindings(new cal(), document.getElementById('calendar'));
-    ko.applyBindings(new day(), document.getElementById('day-details'));
-    ko.applyBindings(new chart('graph'), document.getElementById('graph'));
-    ko.applyBindings(new title(), document.getElementById('title'));
+    new detail();
+    ko.applyBindings(new title(), document.getElementById('header'));
+    ko.applyBindings(new overview('graph-overview'), document.getElementById('overview'));
+//ko.applyBindings(new detail(), document.getElementById('detail'));
 
+    nav.raise_errors = true;
     //start the app at today's date by setting the observable. 
     nav.run('#/today');
 

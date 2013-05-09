@@ -11,8 +11,8 @@ namespace App\Modules\Temp\Controllers {
             $table = new \Core\Databases\Table('temperature');
             $table->field('date', 'INT', true);
             $table->field('temperature', 'INT', false, false);
-            $table->field('period_start', 'INT', false, false);
-            $table->field('period_end', 'INT', false, false);
+            $table->field('period', 'INT', false, false);
+            $table->field('spotting', 'INT', false, false);
             $table->field('opk_surge', 'INT', false, false);
             $table->field('comment', 'VARCHAR', false, false);
             \Core\Databases\Database::createTable($table);
@@ -22,8 +22,8 @@ namespace App\Modules\Temp\Controllers {
             $t->create(array(
                 'date' => 1367157600000,
                 'temperature' => 35.7,
-                'period_start' => true,
-                'period_end' => false,
+                'period' => true,
+                'spotting' => false,
                 'opk_surge' => true,
                 'comment' => 'blah'));
              * 

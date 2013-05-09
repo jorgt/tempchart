@@ -1,7 +1,8 @@
 define([
     'jquery',
+    'underscore',
     'models/observables'
-], function($, obs) {
+], function($, _, obs) {
 
     var model = function() {
         this.notesURL = '/tempchart/api/temp/notes/';
@@ -15,6 +16,7 @@ define([
                 data: data,
                 error: function(json) {
                     console.log('error loading json');
+                    console.log(json);
                 },
                 success: success
             });
@@ -27,15 +29,19 @@ define([
                         parseInt(value.date),
                         parseFloat(value.temperature)
                     ]);
-                    
+
                     obs.days.push({
                         date: parseInt(value.date),
-                        periodStart: value.period_start === 'true',
-                        periodEnd: value.period_end === 'true',
+                        period: value.period === 'true',
+                        spotting: value.spotting === 'true',
                         opkSurge: value.opk_surge === 'true',
                         comment: value.comment || ''
                     });
                 });
+
+                obs.days(_.sortBy(obs.days(), function(val) {
+                    return val.date;
+                }));
 
                 callback();
 
@@ -58,7 +64,12 @@ define([
                     });
         },
         del: function(data) { //delete
-
+            this.ajax(
+                    data,
+                    'DELETE',
+                    function(json) {
+                        //console.log(json);
+                    });
         }
 
     };

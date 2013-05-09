@@ -122,6 +122,9 @@ namespace Core\Api\Controllers {
         }
 
         public function delete() {
+           $params = $this->request->parameters()['input'];
+            
+            $this->response->send($this->model->delete($params));
             
         }
 

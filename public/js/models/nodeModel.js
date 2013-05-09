@@ -6,8 +6,8 @@ define([
 
     return function() {
         this.date = ko.observable();
-        this.periodStart = ko.observable();
-        this.periodEnd = ko.observable();
+        this.period = ko.observable();
+        this.spotting = ko.observable();
         this.opkSurge = ko.observable();
         this.comment = ko.observable();
 
@@ -17,13 +17,13 @@ define([
 
         this.subscribeAll = function() {
 
-            this.subscribers.periodStart = this.periodStart.subscribe(function(val) {
-                this.model.put({'date': this.date(), 'period_start': val});
+            this.subscribers.period = this.period.subscribe(function(val) {
+                this.model.put({'date': this.date(), 'period': val});
 
             }.bind(this));
 
-            this.subscribers.periodEnd = this.periodEnd.subscribe(function(val) {
-                this.model.put({'date': this.date(), 'period_end': val});
+            this.subscribers.spotting = this.spotting.subscribe(function(val) {
+                this.model.put({'date': this.date(), 'spotting': val});
             }.bind(this));
 
             this.subscribers.opkSurge = this.opkSurge.subscribe(function(val) {

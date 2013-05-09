@@ -14,7 +14,7 @@ define([
         // this will update the class of the day form, so we know what to store. 
         // maybe make it a hidden field instead
         this.node = new node();
-        
+
         //changing date means storing the old in the array, and loading the new. 
         obs.date.subscribe(function() {
 
@@ -28,7 +28,7 @@ define([
                     return true;
                 }
             }.bind(this));
-            
+
             this.node.unsubscribeAll();
 
             if (typeof find !== 'undefined') {
@@ -36,14 +36,14 @@ define([
             } else {
                 this.fillNode({
                     'date': parseInt((obs.date().unix() * 1000).toString()),
-                    'periodStart': false,
-                    'periodEnd': false,
+                    'period': false,
+                    'spotting': false,
                     'opkSurge': false,
                     'comment': ''
                 });
                 this.storeUpdatedEntry();
             }
-            
+
             this.node.subscribeAll();
 
         }.bind(this));
@@ -54,17 +54,19 @@ define([
                     return val.date !== this.node.date();
                 }, this);
                 var store = JSON.parse(ko.toJSON(this.node));
-                //console.log('updating entry: ' + store);
                 filtered.push(store);
                 obs.days(filtered);
             }
-            //console.log(obs.days());
+            
+            obs.days(_.sortBy(obs.days(), function(val) {
+               return val.date; 
+            }));
         };
 
         this.fillNode = function(find) {
             this.node.date(find.date);
-            this.node.periodStart(find.periodStart);
-            this.node.periodEnd(find.periodEnd);
+            this.node.period(find.period);
+            this.node.spotting(find.spotting);
             this.node.opkSurge(find.opkSurge);
             this.node.comment(find.comment);
         };
