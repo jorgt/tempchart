@@ -8,6 +8,10 @@ define([
         this.notesURL = '/tempchart/api/temp/notes/';
     };
 
+    /**
+     *
+     * @type {{ajax: Function, get: Function, post: Function, put: Function, del: Function}}
+     */
     model.prototype = {
         ajax: function(data, method, success) {
             $.ajax({
@@ -21,6 +25,11 @@ define([
                 success: success
             });
         },
+
+        /**
+         *
+         * @param callback
+         */
         get: function(callback) { //get ALL
             this.ajax('', 'GET', function(json) {
 

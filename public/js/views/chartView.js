@@ -6,6 +6,9 @@ define([
 ], function(Flotr, obs, model, moment) {
     "use strict";
 
+    /**
+     *
+     */
     return function(element) {
 
         this.element = document.getElementById(element);
@@ -16,6 +19,10 @@ define([
         window.scrollingGraph = true;
         this.start;
 
+        /**
+         *
+         * @type {*}
+         */
         this.initialize = function() {
 
             this.options = {
@@ -75,6 +82,10 @@ define([
         }.bind(this);
 
 
+        /**
+         *
+         * @type {*}
+         */
         this.removePoint = function(e) {
             var pos = this.graph.getEventPosition(e);
             if (pos.x !== undefined && pos.y !== undefined && window.scrollingGraph === true) {
@@ -94,6 +105,10 @@ define([
             }
         }.bind(this);
 
+        /**
+         *
+         * @type {*}
+         */
         this.initializeDrag = function(e) {
             this.start = this.graph.getEventPosition(e);
             Flotr.EventAdapter.observe(this.element, 'mousemove', this.move);
@@ -101,6 +116,10 @@ define([
             Flotr.EventAdapter.observe(document, 'mouseup', this.onMouseUp);
         }.bind(this);
 
+        /**
+         *
+         * @type {*}
+         */
         this.onMouseUp = function(e) {
             setTimeout(function() {
                 window.scrollingGraph = true; //setting enabled to true AFTER the click event fires
@@ -109,6 +128,10 @@ define([
             location.hash = '#/' + moment(new Date(this.graph.axes.x.ticks[7].v)).format('YYYY/MM/DD');
         }.bind(this);
 
+        /**
+         *
+         * @type {*}
+         */
         this.move = function(e) {
             window.scrollingGraph = false;
             this.skip = true;
@@ -120,6 +143,10 @@ define([
             Flotr.EventAdapter.observe(this.graph.overlay, 'mousedown', this.initializeDrag);
         }.bind(this);
 
+        /**
+         *
+         * @type {*}
+         */
         this.draw = function(x) {
             var newx = x || [];
             newx.min = newx.min || this.options.xaxis.min;
@@ -133,6 +160,10 @@ define([
             this.graph = Flotr.draw(this.element, [obs.data()], opt);
         }.bind(this);
 
+        /**
+         *
+         * @type {*}
+         */
         this.addPoint = function(e) {
             var pos = this.graph.getEventPosition(e);
             if (pos.x !== undefined && pos.y !== undefined && pos.y >= 35.50 && window.scrollingGraph === true) {
@@ -150,6 +181,11 @@ define([
             }
         }.bind(this);
 
+        /**
+         *
+         * @param m
+         * @returns {*}
+         */
         this.roundDateToDay = function(m) {
             if (moment(m).hour() < 12) {
                 return moment(moment(m).format('YYYY/MM/DD'));
@@ -158,6 +194,10 @@ define([
             }
         };
 
+        /**
+         *
+         * @type {*}
+         */
         this.addToDateArray = function(date, temp) {
             var ar = obs.data();
             var found = _.some(ar, function(entry) {
@@ -167,18 +207,7 @@ define([
                 //console.log('creating entry: ' + date + ' ' + temp);
                 this.model.post({'date': date.unix() * 1000, 'temperature': temp});
                 obs.data.push([date.unix() * 1000, temp]);
-            } /*else {
-             debugger;
-             ar.map(function(a) {
-             if (moment(new Date(a[0]).toString()).format('YYYYMMDD') === date.format('YYYYMMDD')) {
-             //console.log('updating entry: ' + date + ' ' + temp);
-             this.model.put({'date': date.unix() * 1000, 'temperature': temp});
-             a[1] = temp;
-             }
-             }.bind(this));
-             obs.data(ar);
-             }
-             */
+            }
 
         }.bind(this);
 

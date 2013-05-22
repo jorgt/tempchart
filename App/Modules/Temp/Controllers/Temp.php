@@ -15,6 +15,7 @@ namespace App\Modules\Temp\Controllers {
             $table->field('spotting', 'INT', false, false);
             $table->field('opk_surge', 'INT', false, false);
             $table->field('comment', 'VARCHAR', false, false);
+
             \Core\Databases\Database::createTable($table);
 
             /*
