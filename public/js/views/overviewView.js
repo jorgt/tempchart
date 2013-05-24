@@ -1,9 +1,8 @@
 define([
     'flotr',
     'models/observables',
-    'models/tempModel',
     'moment'
-], function(Flotr, obs, model, moment) {
+], function(Flotr, obs, moment) {
     "use strict";
 
     return function(element) {
@@ -15,7 +14,8 @@ define([
         this.offset = 0;
         window.scrollingGraph = true;
         this.start;
-        
+
+
         obs.initialized.subscribe(function() {
             this.initialize();
         }.bind(this));
@@ -29,23 +29,7 @@ define([
                     max: last,
                     //noTicks: 20,
                     mode: 'time',
-                    timeFormat: '%d.%m',
-                    tickFormatter: function(t) {
-                        var d = moment(new Date(t).toString());
-                        var label = '';
-
-                        if (moment().format('YYYYMMDD') === d.format('YYYYMMDD')) {
-                            label = 'label label-important';
-                        } else if (d.format('YYYYMMDD') === obs.date().format('YYYYMMDD')) {
-                            label = 'label label-info';
-                        }
-
-                        return '<a class="chart-day-link ' + label + '" '
-                                + 'href="#/' + d.format('YYYY/MM/DD') + '">'
-                                + d.format('DD.MM')
-                                + '</a>';
-
-                    },
+                    timeFormat: '%d.%m.%y',
                     timeMode: 'local'
                 },
                 yaxis: {
@@ -70,7 +54,7 @@ define([
                                 + e.y;
                     },
                     radius: 1,
-                    sensibility: 50
+                    sensibility: 350
                 },
                 points: {show: true},
                 lines: {show: true, fill: true, fillOpacity: 0.1}
@@ -81,7 +65,40 @@ define([
 
         this.draw = function() {
             this.graph = Flotr.draw(this.element, [obs.data()], this.options);
+            this.canvasHeight = this.graph.plotHeight;
+            this.canvasWidth = this.graph.plotWidth;
+            this.points = obs.days().length - 1;
+            this.rectangleWidth = this.canvasWidth / this.points;
+            this.offset = this.graph.canvasWidth - this.canvasWidth;
+
+            console.log(this.graph);
+            for (var i = 0; i < obs.days().length; i++) {
+                if (obs.days()[i].period === true) {
+                    this.rectangle('orange', i);
+                }
+                if (obs.days()[i].opkSurge === true) {
+                    this.rectangle('green', i);
+                }
+            }
+
         }.bind(this);
+
+        this.rectangle = function(color, row) {
+            var context = this.graph.octx;
+
+
+            context.beginPath();
+            context.globalAlpha = 0.1;
+
+            context.rect(this.offset + this.rectangleWidth * row,
+                    0,
+                    this.rectangleWidth,
+                    this.canvasHeight);
+
+            context.fillStyle = color;
+            context.fill();
+            context.globalAlpha = 1;
+        }
 
         //this.initialize();
     };

@@ -1,9 +1,10 @@
 define([
+    'jquery',
     'flotr',
     'models/observables',
     'models/tempModel',
     'moment'
-], function(Flotr, obs, model, moment) {
+], function($, Flotr, obs, model, moment) {
     "use strict";
 
     /**
@@ -72,19 +73,21 @@ define([
                                 + e.y;
                     },
                     radius: 1,
-                    sensibility: 50
+                    sensibility: 350
                 },
                 points: {show: true},
                 lines: {show: true, fill: true, fillOpacity: 0.1}
             };
 
+
             this.draw();
+
         }.bind(this);
 
 
         /**
-         *
-         * @type {*}
+         * 
+         * @type Event
          */
         this.removePoint = function(e) {
             var pos = this.graph.getEventPosition(e);
@@ -95,7 +98,7 @@ define([
                 y = Math.round(y * 20) / 20;
                 obs.data(_.filter(obs.data(), function(entry) {
                     if (moment(new Date(entry[0]).toString()).format('YYYYMMDD') === dx.format('YYYYMMDD')) {
-                        this.model.del({date:dx.unix()*1000});
+                        this.model.del({date: dx.unix() * 1000});
                     } else {
                         return entry;
                     }
