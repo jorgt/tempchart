@@ -29,12 +29,14 @@ require.config({
 });
 
 define([
+    'jquery',
     'controllers/navigation',
     'views/overviewView',
     'views/detailView',
     'views/titleView',
     'knockout'
-], function(nav, overview, detail, title, ko) {
+], function($, nav, overview, detail, title, ko) {
+
 
 
     //this applies all bindings for the calendar, and feeds it the
@@ -47,6 +49,8 @@ define([
     nav.raise_errors = true;
     //start the app at today's date by setting the observable. 
     nav.run('#/today');
+
+    //$('input.pretty').prettyCheckable();
 
 
 

@@ -18,10 +18,9 @@ define([
         }.bind(this));
 
         this.get('#/([0-9]{4})\/([0-9]{1,2})\/([0-9]{1,2})', function() {
-            
+
             if (obs.initialized() === false) {
                 this.reroute(location.hash.substring(2));
-                
             } else {
                 setTimeout(1000, detail());
                 obs.date(moment(location.hash.substring(2)));
